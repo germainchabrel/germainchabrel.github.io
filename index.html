@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Germain Chabrel — Portfolio</title>
+<meta name="description" content="Germain Chabrel, étudiant en Master Ville et Environnement Urbains (pollution atmosphérique, climat, santé) à l'Université Côte d'Azur. Projets SIG, modélisation et cartographie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f0; --surface:#ffffff; --ink:#1d2421; --muted:#5c6762; --line:#e2e1d9;
+  --accent:#1f7a5a; --accent-soft:#e3f1ea; --chip:#eeede6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121614; --surface:#1a201d; --ink:#e8ece9; --muted:#9aa6a0; --line:#2b332f;
+    --accent:#5cc79a; --accent-soft:#1e3329; --chip:#242b27;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a201d; --ink:#e8ece9; --muted:#9aa6a0; --line:#2b332f;
+  --accent:#5cc79a; --accent-soft:#1e3329; --chip:#242b27;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+nav .brand{font-family:Fraunces,serif;font-weight:650;text-decoration:none;color:var(--ink);white-space:nowrap}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;overflow-x:auto}
+nav ul a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap}
+nav ul a:hover{color:var(--ink)}
+header.hero{padding:64px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1fr 180px;gap:40px;align-items:center}
+.hero h1{font-family:Fraunces,serif;font-weight:650;font-size:clamp(34px,6vw,54px);line-height:1.08;margin:0 0 12px;letter-spacing:-.01em}
+.hero p.lead{font-size:18px;color:var(--muted);margin:0 0 22px;max-width:60ch}
+.hero img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid var(--surface);box-shadow:0 6px 24px rgba(0,0,0,.12)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500;font-size:14px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn svg{width:16px;height:16px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-family:Fraunces,serif;font-weight:650;font-size:28px;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 26px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card .thumb{aspect-ratio:16/9;background:var(--chip);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card .thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.card .thumb img.contain{object-fit:contain;padding:18px}
+.card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{margin:0;font-size:17px;line-height:1.35}
+.card p{margin:0;color:var(--muted);font-size:14.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tag{font-size:12px;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.card .more{margin-top:auto;padding-top:8px;font-weight:600;font-size:14px;text-decoration:none}
+.card .more:hover{text-decoration:underline}
+.mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:18px}
+.mini .item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mini h3{font-size:15px;margin:0 0 4px}
+.mini p{margin:0;color:var(--muted);font-size:14px}
+.timeline{display:flex;flex-direction:column;gap:14px}
+.tl{display:grid;grid-template-columns:130px 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.tl .when{color:var(--accent);font-weight:600;font-size:14px}
+.tl h3{margin:0 0 2px;font-size:16px}
+.tl .where{color:var(--muted);font-size:14px;margin:0 0 6px}
+.tl p{margin:0;font-size:14.5px}
+.tl .doc{display:inline-block;margin-top:8px;font-size:14px;font-weight:600;text-decoration:none}
+.tl img{margin-top:12px;max-width:min(100%,520px);border-radius:8px;border:1px solid var(--line)}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.skill h3{margin:0 0 10px;font-size:15px}
+.skill .tags .tag{background:var(--accent-soft);color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+footer{padding:32px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer;font-size:13px}
+@media (max-width:700px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero img{width:120px;height:120px;order:-1}
+  .tl{grid-template-columns:1fr;gap:4px}
+  .two{grid-template-columns:1fr}
+  nav ul{display:none}
+  header.hero{padding:36px 0 28px}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Germain Chabrel</a>
+    <ul>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#experiences">Expériences</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="theme" aria-label="Changer de thème">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Géographie, air et environnement urbain</h1>
+      <p class="lead">Étudiant en Master Ville et Environnement Urbains à l'Université Côte d'Azur (parcours pollution atmosphérique, changement climatique, impacts sanitaires et énergies renouvelables). Je construis des outils cartographiques et des modèles pour rendre la qualité de l'air et du cadre de vie plus lisibles.</p>
+      <div class="links">
+        <a class="btn primary" href="#projets">Voir les projets</a>
+        <a class="btn" href="https://www.linkedin.com/in/germain-chabrel-981539314" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21H9z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://www.inaturalist.org/people/germaindextre" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c6 0 12-4 14-12-6 1-10 4-12 8M14 4c2 0 4 1 6 3"/></svg>iNaturalist</a>
+        <a class="btn" href="mailto:germain.chabrel@outlook.fr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+      </div>
+    </div>
+    <img src="img/photo.jpg" alt="Portrait de Germain Chabrel">
+  </div>
+</header>
+
+<section id="projets">
+  <div class="wrap">
+    <h2>Projets</h2>
+    <p class="sub">Applications, modèles et études de terrain.</p>
+
+    <div class="cards">
+      <article class="card">
+        <div class="thumb"><img src="img/oncyal.jpg" alt="Capture d'Oncyal 06 : itinéraire calme sur une carte de Nice"></div>
+        <div class="body">
+          <h3>Oncyal 06</h3>
+          <p>Application de navigation à pied et à vélo qui propose des itinéraires évitant la pollution atmosphérique, lumineuse et sonore dans les Alpes-Maritimes.</p>
+          <div class="tags"><span class="tag">Web</span><span class="tag">JavaScript</span><span class="tag">Cartographie</span></div>
+          <a class="more" href="https://oncyal.germain-chab.workers.dev/" target="_blank" rel="noopener">Ouvrir l'application →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="img/air-nice.jpg" alt="Tableau de bord Air Nice : station Nice Aéroport"></div>
+        <div class="body">
+          <h3>Air Nice</h3>
+          <p>Site affichant en direct les données de pollution atmosphérique (O₃, NO₂, PM10, PM2,5) d'une station de mesure Atmosud.</p>
+          <div class="tags"><span class="tag">Données ouvertes</span><span class="tag">HTML/CSS/JS</span><span class="tag">Qualité de l'air</span></div>
+          <a class="more" href="https://air-nice.germain-chab.workers.dev/" target="_blank" rel="noopener">Voir le site →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img class="contain" src="img/gama.png" alt="Visualisation du modèle Gama : canyon de rue et cellules de concentration"></div>
+        <div class="body">
+          <h3>Modélisation multi-agents de la pollution aux PM2,5</h3>
+          <p>Modèle GAMA (automate cellulaire et système multi-agents) simulant la dispersion des particules fines dans un canyon de rue, en intégrant trafic, chauffage, météorologie et morphologie bâtie.</p>
+          <div class="tags"><span class="tag">GAMA</span><span class="tag">Modélisation</span><span class="tag">PM2,5</span></div>
+          <a class="more" href="https://drive.google.com/file/d/1ZMIOqYbHmqHFNt6M89BhvkLq1cVeKetz/view" target="_blank" rel="noopener">Lire le rapport (PDF) →</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="mini">
+      <div class="item">
+        <h3>Occupation du sol de Ouagadougou</h3>
+        <p>Cartographie par télédétection à partir d'images satellite Landsat.</p>
+      </div>
+      <div class="item">
+        <h3>Modélisation météorologique avec Méso-NH</h3>
+        <p>De la montagne à l'orage : simulations de phénomènes météorologiques.</p>
+      </div>
+      <div class="item">
+        <h3>Pollution de l'air et perception citoyenne</h3>
+        <p>Mesures de PM2,5 et PM10 couplées à une enquête sur les biais de perception des usagers.</p>
+        <p><a href="https://drive.google.com/file/d/1Xs0SELQa_HKDN7lWWwxPn43huCJUv0Hr/view" target="_blank" rel="noopener">Rapport (PDF)</a></p>
+      </div>
+      <div class="item">
+        <h3>Programme Lichen Go</h3>
+        <p>Cartographie collaborative des lichens, bioindicateurs de la pollution atmosphérique (Bois de Vincennes).</p>
+        <p><a href="https://drive.google.com/file/d/1Xx6OYfVEuwOZ_PSyrthotlkfZwPFADWP/view" target="_blank" rel="noopener">Rapport (PDF)</a></p>
+      </div>
+      <div class="item">
+        <h3>Inventaire floristique d'un jardin d'agronomie tropicale</h3>
+        <p>Comprendre comment éviter la propagation d'espèces invasives (parcelle du Dahomey, Paris).</p>
+        <p><a href="https://drive.google.com/file/d/1p7hNYe6Rz_G5bvsBjEty7D1Ipfw_ApJZ/view" target="_blank" rel="noopener">Rapport (PDF)</a></p>
+      </div>
+      <div class="item">
+        <h3>Pollution des sols autour des champs pétroliers d'Itteville</h3>
+        <p>Élaboration d'un protocole d'étude (Île-de-France).</p>
+        <p><a href="https://drive.google.com/file/d/1-hGIrwKZ9ex06o1ekHFLVfIg4KR0xzIb/view" target="_blank" rel="noopener">Protocole (PDF)</a></p>
+      </div>
+      <div class="item">
+        <h3>Végétation spontanée en milieu urbain</h3>
+        <p>Suivi d'une jardinière sur deux ans, avec iNaturalist et PictureThis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiences">
+  <div class="wrap">
+    <h2>Expériences professionnelles</h2>
+    <p class="sub">Stages et travaux de terrain.</p>
+    <div class="timeline">
+      <div class="tl">
+        <div class="when">2026 · 6 mois</div>
+        <div>
+          <h3>Chargé de déploiement des boucles de correction de l'OCS GE</h3>
+          <p class="where">Institut national de l'information géographique et forestière (IGN), Saint-Mandé</p>
+          <p>Analyse de la participation des acteurs publics au dispositif participatif du référentiel d'OCcupation du Sol à Grande Échelle. Élaboration d'un plan d'action pour dynamiser l'engagement des utilisateurs et rendre le processus plus accessible.</p>
+          <a class="doc" href="https://drive.google.com/drive/folders/1hRVDOk-9F0TtaNeBi8VT0-k_unnpI7fn" target="_blank" rel="noopener">Documents du stage →</a><br>
+          <img src="img/ocsge.jpg" alt="Extrait de la plaquette utilisateurs OCS GE : nomenclature couverture et usage du sol" loading="lazy">
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2023 · 2 mois</div>
+        <div>
+          <h3>Stage : mise à jour des données hydrologiques</h3>
+          <p class="where">Chambre d'Agriculture de l'Aisne, Laon</p>
+          <p>Automatisation du calcul des volumes d'eau mobilisables par bassin versant du département.</p>
+          <a class="doc" href="https://drive.google.com/drive/folders/1wkUQW-a7iO_HtkVWK_YuAQh1MLN2Vgfx" target="_blank" rel="noopener">Documents du stage →</a>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2018, 2022, 2025</div>
+        <div>
+          <h3>Travaux agricoles réguliers</h3>
+          <p class="where">Grandes cultures en Picardie, arboriculture dans la Drôme</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formation">
+  <div class="wrap">
+    <h2>Formation</h2>
+    <p class="sub">Parcours universitaire.</p>
+    <div class="timeline">
+      <div class="tl">
+        <div class="when">2025 – 2027</div>
+        <div>
+          <h3><a href="https://univ-cotedazur.fr/formation/offre-de-formation/parcours-de-master/pollution-atmospherique-changement-climatique-impacts-sanitaires-energies-renouvelables-air" target="_blank" rel="noopener">Master Ville et Environnement Urbains</a></h3>
+          <p class="where">Université Côte d'Azur, Nice</p>
+          <p>Parcours pollution atmosphérique, changement climatique, impacts sanitaires, énergies renouvelables.</p>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2022 – 2025</div>
+        <div>
+          <h3><a href="https://formations.pantheonsorbonne.fr/fr/catalogue-des-formations/licence-L/licence-geographie-et-amenagement-KBTFYMBI/licence-geographie-et-amenagement-parcours-environnement-KBTG6P95.html" target="_blank" rel="noopener">Licence de Géographie et Aménagement du territoire</a></h3>
+          <p class="where">Université Paris 1 Panthéon-Sorbonne</p>
+          <p>Option environnement.</p>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2021 – 2022</div>
+        <div>
+          <h3><a href="https://pia.ac-paris.fr/serail/jcms/s2_1816836/fr/hypokhagne" target="_blank" rel="noopener">Classe préparatoire littéraire (hypokhâgne)</a></h3>
+          <p class="where">Lycée Fénelon, Paris</p>
+          <p>Option géographie.</p>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2021</div>
+        <div>
+          <h3>Baccalauréat</h3>
+          <p class="where">Lycée Saint-Michel, Saint-Mandé</p>
+          <p>Spécialités physique-chimie et HGGSP, options mathématiques complémentaires et théâtre.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="wrap">
+    <h2>Compétences</h2>
+    <p class="sub">Outils et méthodes.</p>
+    <div class="skills">
+      <div class="skill"><h3>SIG et télédétection</h3><div class="tags"><span class="tag">QGIS</span><span class="tag">ArcGIS</span><span class="tag">FME</span><span class="tag">TerrSet</span><span class="tag">SaTScan</span></div></div>
+      <div class="skill"><h3>Modélisation</h3><div class="tags"><span class="tag">GAMA</span><span class="tag">NetLogo</span><span class="tag">Méso-NH</span><span class="tag">HEC-HMS</span></div></div>
+      <div class="skill"><h3>Données</h3><div class="tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">R Studio</span><span class="tag">Excel</span><span class="tag">Access</span></div></div>
+      <div class="skill"><h3>Web et système</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Ubuntu / Linux</span></div></div>
+      <div class="skill"><h3>Graphisme et vidéo</h3><div class="tags"><span class="tag">Illustrator</span><span class="tag">Photoshop</span><span class="tag">Premiere Pro</span><span class="tag">Audition</span></div></div>
+      <div class="skill"><h3>Méthodes</h3><div class="tags"><span class="tag">Enquête utilisateurs</span><span class="tag">Inventaire floristique</span><span class="tag">Mesure quantitative</span><span class="tag">Météorologie</span></div></div>
+    </div>
+    <div class="two mini">
+      <div class="item"><h3>Langues</h3><p>Anglais (B2), allemand (A2).</p></div>
+      <div class="item"><h3>Engagements et loisirs</h3><p>Aide aux personnes âgées, ramassage de déchets, réparation de vélos, vlogs de randonnée. Théâtre, football, randonnée, ornithologie, cyclisme, botanique.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span>Germain Chabrel · <a href="mailto:germain.chabrel@outlook.fr">germain.chabrel@outlook.fr</a></span>
+    <span><a href="https://www.linkedin.com/in/germain-chabrel-981539314" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.inaturalist.org/people/germaindextre" target="_blank" rel="noopener">iNaturalist</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  try{var t=localStorage.getItem('theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme')==='dark'
+             : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
